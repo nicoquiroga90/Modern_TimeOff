@@ -1,9 +1,12 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import CreateTeam from "../Functionalities/CreateTeam";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
+  const [teamsDatabase, setTeamsDatabase] = useState([]);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,12 +41,7 @@ const Hero = () => {
                       placeholder="Enter your email address"
                       className="rounded-full border border-stroke px-6 py-2.5 shadow-solid-2 focus:border-primary focus:outline-none dark:border-strokedark dark:bg-black dark:shadow-none dark:focus:border-primary"
                     />
-                    <button
-                      aria-label="get started button"
-                      className="flex rounded-full bg-black px-7.5 py-2.5 text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho"
-                    >
-                      Get Started
-                    </button>
+                   <CreateTeam setTeamsDatabase={setTeamsDatabase} />
                   </div>
                 </form>
 
