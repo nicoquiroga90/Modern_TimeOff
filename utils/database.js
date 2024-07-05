@@ -20,7 +20,6 @@ export async function getMembers() {
 
 // Función para obtener un miembro por su ID
 export async function getMemberById(id) {
-    console.log(id)
     const [member] = await sql`SELECT * FROM members WHERE id = ${id}`;
     return member;
 }
