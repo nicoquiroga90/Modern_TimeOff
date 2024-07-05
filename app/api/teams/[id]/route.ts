@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
-import { getTeamById, updateTeam, deleteTeam } from "../../../utils/database";
+import { getTeamById, updateTeam, deleteTeam } from "../../../../utils/database";
 
-export async function GET(request) {
-    const { id } = request.params;
+export async function GET(request: Request,
+  { params }: { params: { id: string } }
+)  {
+    const { id } = params;
     try {
         const team = await getTeamById(id);
         if (team) {
@@ -16,8 +18,10 @@ export async function GET(request) {
     }
 }
 
-export async function PUT(request) {
-    const { id } = request.params;
+export async function PUT(request: Request,
+  { params }: { params: { id: string } }
+)  {
+    const { id } = params;
     const updatedTeam = request.body;
     try {
         await updateTeam(id, updatedTeam);
@@ -28,8 +32,10 @@ export async function PUT(request) {
     }
 }
 
-export async function DELETE(request) {
-    const { id } = request.params;
+export async function DELETE(request: Request,
+  { params }: { params: { id: string } }
+)  {
+    const { id } = params;
     try {
         await deleteTeam(id);
         return NextResponse.json({ message: "Team deleted successfully" });

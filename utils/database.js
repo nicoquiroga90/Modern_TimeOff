@@ -1,5 +1,3 @@
-// En un archivo, por ejemplo: utils/database.js
-
 import { neon } from "@neondatabase/serverless";
 
 const databaseUrl = process.env.DATABASE_URL;
@@ -10,62 +8,101 @@ if (!databaseUrl) {
 
 const sql = neon(databaseUrl);
 
-// Funciones CRUD para la tabla members
-
-// Función para obtener todos los miembros
+// Funciones CRUD para la entidad "members"
 export async function getMembers() {
     const members = await sql`SELECT * FROM members`;
     return members;
 }
 
-// Función para obtener un miembro por su ID
+export async function createMember(memberData) {
+    const result = await sql`
+        INSERT INTO members (name, email, created_at)
+        VALUES (${memberData.name}, ${memberData.email}, NOW())
+        RETURNING *`;
+    return result[0];
+}
+
 export async function getMemberById(id) {
-    const [member] = await sql`SELECT * FROM members WHERE id = ${id}`;
-    return member;
+    const result = await sql`SELECT * FROM members WHERE id = ${id}`;
+    return result[0];
 }
 
-// Función para agregar un nuevo miembro
-export async function addMember(newMember) {
-    newMember.created_date = new Date();
-    const query = await sql`INSERT INTO members ${sql(newMember)}`;
-    return query;
+export async function updateMember(id, updatedMemberData) {
+    const result = await sql`
+        UPDATE members
+        SET name = ${updatedMemberData.name}, email = ${updatedMemberData.email}
+        WHERE id = ${id}
+        RETURNING *`;
+    return result[0];
 }
 
-// Función para actualizar un miembro
-export async function updateMember(id, updatedMember) {
-    const query = await sql`UPDATE members SET ${sql(updatedMember)} WHERE id = ${id}`;
-    return query;
-}
-
-// Función para eliminar un miembro por su ID
 export async function deleteMember(id) {
-    const query = await sql`DELETE FROM members WHERE id = ${id}`;
-    return query;
+    const result = await sql`DELETE FROM members WHERE id = ${id} RETURNING *`;
+    return result[0];
 }
 
-// Funciones adicionales para otras tablas (ejemplo: teams y timeoff)
-
-// Función para obtener todos los equipos (teams)
+// Funciones CRUD para la entidad "teams"
 export async function getTeams() {
     const teams = await sql`SELECT * FROM teams`;
     return teams;
 }
 
-// Función para obtener todos los registros de tiempo libre (timeoff)
+export async function createTeam(teamData) {
+    const result = await sql`
+        INSERT INTO teams (name, description, created_at)
+        VALUES (${teamData.name}, ${teamData.description}, NOW())
+        RETURNING *`;
+    return result[0];
+}
+
+export async function getTeamById(id) {
+    const result = await sql`SELECT * FROM teams WHERE id = ${id}`;
+    return result[0];
+}
+
+export async function updateTeam(id, updatedTeamData) {
+    const result = await sql`
+        UPDATE teams
+        SET name = ${updatedTeamData.name}, description = ${updatedTeamData.description}
+        WHERE id = ${id}
+        RETURNING *`;
+    return result[0];
+}
+
+export async function deleteTeam(id) {
+    const result = await sql`DELETE FROM teams WHERE id = ${id} RETURNING *`;
+    return result[0];
+}
+
+// Funciones CRUD para la entidad "timeoff"
 export async function getTimeOffRecords() {
     const timeOffRecords = await sql`SELECT * FROM timeoff`;
     return timeOffRecords;
 }
 
-// Función para obtener todos los datos relacionados (miembros, equipos y tiempo libre)
-export async function getAllData() {
-    const members = await getMembers();
-    const teams = await getTeams();
-    const timeOffRecords = await getTimeOffRecords();
+export async function createTimeOffRecord(timeOffData) {
+    const result = await sql`
+        INSERT INTO timeoff (employee_id, start_date, end_date, reason, created_at)
+        VALUES (${timeOffData.employee_id}, ${timeOffData.start_date}, ${timeOffData.end_date}, ${timeOffData.reason}, NOW())
+        RETURNING *`;
+    return result[0];
+}
 
-    return {
-        members,
-        teams,
-        timeOffRecords
-    };
+export async function getTimeOffRecordById(id) {
+    const result = await sql`SELECT * FROM timeoff WHERE id = ${id}`;
+    return result[0];
+}
+
+export async function updateTimeOffRecord(id, updatedTimeOffData) {
+    const result = await sql`
+        UPDATE timeoff
+        SET start_date = ${updatedTimeOffData.start_date}, end_date = ${updatedTimeOffData.end_date}, reason = ${updatedTimeOffData.reason}
+        WHERE id = ${id}
+        RETURNING *`;
+    return result[0];
+}
+
+export async function deleteTimeOffRecord(id) {
+    const result = await sql`DELETE FROM timeoff WHERE id = ${id} RETURNING *`;
+    return result[0];
 }

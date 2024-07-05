@@ -1,1 +1,0 @@
-DATABASE_URL='postgresql://TimeOffDB_owner:PASSWORD@ep-empty-voice-a2dpidxi.eu-central-1.aws.neon.tech/TimeOffDB?sslmode=require'
