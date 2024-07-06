@@ -1,7 +1,9 @@
+'use client';
+
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
 import { apiPath } from "../../utils/api";
-import { TeamDataContext } from "../component/Context";
+import { TeamDataContext } from "./Context";
 import Loading from "./Loading";
 import {
   Button,
@@ -12,10 +14,11 @@ import {
   TextField,
   Alert,
 } from "@mui/material";
-import "../styles/createMember.css";
+import "./styles/createMember.css";
 
 function CreateMember() {
-  const { code } = useParams();
+  const params = useParams()
+  const { id } = params;
   const { teams, refreshTeamData } = useContext(TeamDataContext);
   const [isLoading, setIsLoading] = useState(false);
   const [teamId, setTeamId] = useState(null);
@@ -33,13 +36,13 @@ function CreateMember() {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const team = teams.find((team) => team.team_code === code);
+    const team = teams.find((team) => team.team_code === id);
     if (team) {
       setTeamId(team.id);
     } else {
-      console.error(`Team with code_team '${code}' not found.`);
+      console.error(`Team with code_team '${id}' not found.`);
     }
-  }, [code, teams]);
+  }, [id, teams]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

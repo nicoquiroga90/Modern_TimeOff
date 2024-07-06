@@ -1,13 +1,13 @@
+'use client';
 import { useState, useContext } from "react";
 import { apiPath } from "../../utils/api";
-import { TeamDataContext } from "../component/Context";
-import "../styles/createTimeoff.css";
+import { TeamDataContext } from "../Functionalities/Context";
+import "./styles/createTimeoff.css";
 import {
   Button,
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions,
 } from "@mui/material";
 
 function CreateTimeoff() {

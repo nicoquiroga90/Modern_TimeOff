@@ -1,7 +1,8 @@
+'use client';
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
 import { apiPath } from "../../utils/api";
-import { TeamDataContext } from "../component/Context";
+import { TeamDataContext } from "./Context";
 import {
   Button,
   Dialog,
@@ -9,13 +10,14 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import "../styles/deleteMember.css";
+import "./styles/deleteMember.css";
 
 const DeleteMember = () => {
   const { members, teams, setMembers, refreshTeamData } = useContext(TeamDataContext);
   const [selectedMember, setSelectedMember] = useState("");
   const [filteredMembers, setFilteredMembers] = useState([]);
-  const { code } = useParams();
+ const params = useParams()
+  const { id } = params;
   const [teamId, setTeamId] = useState(null);
   const [openSelectDialog, setOpenSelectDialog] = useState(false);
   const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
@@ -23,7 +25,7 @@ const DeleteMember = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const team = teams.find((team) => team.team_code === code);
+        const team = teams.find((team) => team.team_code === id);
         if (team) {
           setTeamId(team.id);
           const filtered = members.filter(
@@ -31,15 +33,17 @@ const DeleteMember = () => {
           );
           setFilteredMembers(filtered);
         } else {
-          console.error(`Team with code '${code}' not found.`);
+          console.error(`Team with code '${id}' not found.`);
           setFilteredMembers([]);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-    fetchData();
-  }, [code, teams, members]);
+    if (id) { 
+      fetchData();
+    }
+  }, [id, teams, members]);
 
   const handleOpenSelectDialog = () => {
     setOpenSelectDialog(true);
@@ -77,7 +81,7 @@ const DeleteMember = () => {
           (member) => member.id !== Number(selectedMember)
         );
         setFilteredMembers(updatedMembers);
-        refreshTeamData()
+        refreshTeamData();
         alert("Member deleted successfully");
         setMembers(updatedMembers);
         handleCloseConfirmDialog();

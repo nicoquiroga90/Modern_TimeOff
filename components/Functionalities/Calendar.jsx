@@ -1,11 +1,13 @@
+'use client';
+
 import { useEffect, useState, useContext } from "react";
 import { Calendar, dayjsLocalizer } from "react-big-calendar";
 import dayjs from "dayjs";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { TeamDataContext } from "../component/Context";
+import { TeamDataContext } from "../../components/Functionalities/Context";
 import { apiPath } from "../../utils/api";
-import DeleteTimeOff from "../component/DeleteTimeOff";
-import "../styles/calender.css";
+import DeleteTimeOff from "../../components/Functionalities/DeleteTimeOff";
+import "../../components/Functionalities/styles/calender.css"
 
 function MyCalendar() {
   const localizer = dayjsLocalizer(dayjs);

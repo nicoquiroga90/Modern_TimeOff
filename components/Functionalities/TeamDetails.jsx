@@ -1,23 +1,26 @@
+'use client';
+
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { TeamDataContext } from "../component/Context";
-import CreateMember from "../component/CreateMember";
+import { useParams } from "next/navigation";
+import { TeamDataContext } from "./Context";
+import CreateMember from "./CreateMember";
 import DeleteMember from "./DeleteMember";
-import "../styles/teamDetails.css";
+import "./styles/teamDetails.css";
 
 const TeamMembers = () => {
-  const { code } = useParams();
+   const params = useParams()
+  const { id } = params;
   const { members, teams } = useContext(TeamDataContext);
   const [teamMembers, setTeamMembers] = useState([]);
 
   useEffect(() => {
-    const teamId = teams.find((team) => team.team_code === code)?.id;
+    const teamId = teams.find((team) => team.team_code === id)?.id;
 
     const filteredMembers = members.filter(
       (member) => member.team_id === teamId
     );
     setTeamMembers(filteredMembers);
-  }, [code, members, teams]);
+  }, [id, members, teams]);
 
   return (
     <div className="team-member-container">
@@ -39,12 +42,12 @@ const TeamMembers = () => {
       </div>
       
       <div className="member-action-conteiner">
-      <div className="create-member-conteiner">
-        <CreateMember />
-      </div>
-      <div className="delete-member-conteiner">
-        <DeleteMember />
-      </div>
+        <div className="create-member-conteiner">
+          <CreateMember />
+        </div>
+        <div className="delete-member-conteiner">
+          <DeleteMember />
+        </div>
       </div>
     </div>
   );
