@@ -1,0 +1,177 @@
+.main-header {
+  font-size: 2em;
+  color: var(--color-textlight);
+  background-color: var(--color-borders);
+  width: fit-content;
+  padding: 1% 1em;
+  border-radius: 15px;
+  border: 3px solid #FCE8DF;
+}
+.main-subheader {
+  color: whitesmoke;
+  text-align: left;
+  background-color: var(--color-borders);
+  padding: 1.2em;
+  border-radius: 15px;
+  font-weight: 400;
+  border: 5px solid #FCE8DF;
+}
+
+.main-section {
+  display: flex;
+  background-color: var(--color-backgroundlight);
+  padding: 2em;
+  gap: 1em
+}
+
+.main-image-container {
+  margin: auto;
+}
+
+.img-main {
+  height: 18em;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.img-main:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+#teamCodeInput {
+  margin: 1em;
+  border-radius: 15px;
+  border: 2px solid var(--color-borders);
+  text-align: center;
+  height: 2.2em;
+  outline: none;
+  font-size: 1em;
+}
+
+#teamCodeInput::placeholder {
+  text-align: center;
+  color: var(--color-borders);
+}
+
+#teamCodeInput:focus::placeholder {
+  color: transparent;
+}
+
+.submitTeam-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.submitTeam-container label {
+  font-size: 1.2em;
+  color: #FCE8DF;
+  font-weight: 800;
+}
+
+.dark .submitTeam-container label {
+  color: #ffffff;
+}
+
+.button-submit {
+height: 3em;
+    width: 10em;
+    font-family: "Fira Sans";
+    background-color: var(--color-text);
+    color: white;
+    border-radius: 15px;
+    border: 3px solid var(--color-textlight);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1em;
+    -webkit-text-stroke: 1px;
+}
+
+.button-submit:hover {
+ height: 3em;
+    width: 10em;
+    font-family: "Fira Sans";
+    background-color: var(--color-textlight);
+    border-radius: 15px;
+    border: 3px solid var(--color-text);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1em;
+    -webkit-text-stroke: 1px;
+}
+
+.testim-header {
+  color: antiquewhite;
+  align-items: center;
+}
+
+.home-container.dark {
+  background: #000000;
+  width: fit-content;
+}
+
+.dark .main-header,
+.dark .testim-header {
+  color: #ffffff;
+}
+
+.dark .main-subheader {
+  color: #ffffff;
+}
+
+.dark .submitTeam-container {
+  color: #ffffff;
+}
+
+@media screen and (max-width: 768px) {
+  .main-header {
+    font-size: 1.5em;
+  }
+
+  .main-subheader {
+    width: 85%;
+  }
+
+  .main-section {
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .img-main {
+    height: 12em;
+  }
+
+  #teamCodeInput {
+    width: 80%;
+    margin: 0.5em auto;
+  }
+
+  .submitTeam-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-header {
+    font-size: 1.2em;
+  }
+
+  .img-main {
+    height: 10em;
+    padding: 1em 0;
+  }
+
+  #teamCodeInput {
+    width: 90%;
+  }
+
+  .submitTeam-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

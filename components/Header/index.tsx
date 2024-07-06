@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import CreateTeam from "../Functionalities/CreateTeam";
 
 const Header = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
@@ -161,12 +162,7 @@ const Header = () => {
               GitHub Repo 🌟
             </Link>
 
-            <Link
-              href="https://nextjstemplates.com/templates/solid"
-              className="flex items-center justify-center rounded-full bg-primary px-7.5 py-2.5 text-regular text-white duration-300 ease-in-out hover:bg-primaryho"
-            >
-              Create a New Team 🔥
-            </Link>
+            <CreateTeam />
           </div>
         </div>
       </div>

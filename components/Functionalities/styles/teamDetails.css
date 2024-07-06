@@ -1,0 +1,27 @@
+.team-member-container {
+    background-color: var(--color-backgroundlight);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.team-title {
+  color: var(--color-textlight);
+  padding: 0 0.6em;
+}
+
+.team-member {
+  list-style-type: none;
+    font-weight: 600;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    border-radius: 15px;
+    text-align: center;
+    margin: 0.5em;
+    }
+
+.member-action-conteiner {
+  display: flex;
+  padding: 0 0 0 3em;
+  flex-flow: column;
+}

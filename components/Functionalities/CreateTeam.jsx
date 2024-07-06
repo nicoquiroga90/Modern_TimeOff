@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { apiPath } from "../../utils/api";
 import {
   Dialog,
   DialogTitle,
@@ -9,6 +10,7 @@ import {
   Alert,
 } from "@mui/material";
 import Loading from "./Loading";
+import "./styles/createTeam.css"
 
 const CreateTeam = ({ setTeamsDatabase }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +32,7 @@ const CreateTeam = ({ setTeamsDatabase }) => {
         .substring(2, 8)
         .toUpperCase();
 
-      const response = await fetch("http://localhost:3000/teams", {
+      const response = await fetch(apiPath("/teams"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

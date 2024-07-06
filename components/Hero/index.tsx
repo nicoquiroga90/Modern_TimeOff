@@ -2,14 +2,32 @@
 import Image from "next/image";
 import { useState } from "react";
 import CreateTeam from "../Functionalities/CreateTeam";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
-  const [email, setEmail] = useState("");
+  const [teamCode, setTeamCode] = useState("");
+  const [error, setError] = useState("");
   const [teamsDatabase, setTeamsDatabase] = useState([]);
+  const router = useRouter();
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+
+    try {
+      const response = await fetch('http://localhost:3000/api/teams');
+      const teams = await response.json();
+
+      const team = teams.find((team) => team.team_code === teamCode);
+
+      if (team) {
+        router.push(`/team/${teamCode}`);
+      } else {
+        setError("Invalid team code. Please try again.");
+      }
+    } catch (err) {
+      setError("Error fetching teams. Please try again later.");
+    }
   };
 
   return (
@@ -21,10 +39,10 @@ const Hero = () => {
               <h4 className="mb-4.5 text-lg font-medium text-black dark:text-white">
                 🚀 Streamline your workflow 🚀
               </h4>
-              <h1 className="mb-5 pr-16 text-3xl font-bold text-black dark:text-white xl:text-hero ">
+              <h1 className="mb-5 pr-16 text-3xl font-bold text-black dark:text-white xl:text-hero">
                 Simplify the process of managing vacations with {"   "}
-                <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg dark:before:bg-titlebgdark ">
-                  TimeOFF 
+                <span className="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg dark:before:bg-titlebgdark">
+                  TimeOFF
                 </span>
               </h1>
               <p>
@@ -35,18 +53,24 @@ const Hero = () => {
                 <form onSubmit={handleSubmit}>
                   <div className="flex flex-wrap gap-5">
                     <input
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={teamCode}
+                      onChange={(e) => setTeamCode(e.target.value)}
                       type="text"
-                      placeholder="Enter your email address"
+                      placeholder="Enter your team code"
                       className="rounded-full border border-stroke px-6 py-2.5 shadow-solid-2 focus:border-primary focus:outline-none dark:border-strokedark dark:bg-black dark:shadow-none dark:focus:border-primary"
                     />
-                   <CreateTeam setTeamsDatabase={setTeamsDatabase} />
+                    <button type="submit" className="btn-primary">Submit</button>
                   </div>
                 </form>
 
+                {error && (
+                  <p className="mt-5 text-red-500 dark:text-red-400">
+                    {error}
+                  </p>
+                )}
+
                 <p className="mt-5 text-black dark:text-white">
-                  Try for free no credit card required.
+                  Don't have a team created yet?<br/>Create one from our menu! 😃
                 </p>
               </div>
             </div>
