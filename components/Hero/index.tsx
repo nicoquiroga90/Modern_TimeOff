@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import CreateTeam from "../Functionalities/CreateTeam";
 import { useRouter } from "next/navigation";
 
 const Hero = () => {

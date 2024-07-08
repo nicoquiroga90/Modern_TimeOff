@@ -42,7 +42,6 @@ const WelcomeTeam = () => {
             </h1>
           )}
         </div>
-        <img src="/logo2.png" alt="Logo" className="logo" />
       </div>
     </div>
   );

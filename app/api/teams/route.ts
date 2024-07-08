@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getTeams, addTeam } from "../../../utils/database";
+import { getTeams, createTeam } from "../../../utils/database";
 
 export async function GET() {
     try {
@@ -14,7 +14,7 @@ export async function GET() {
 export async function POST(request) {
     const newTeam = request.body;
     try {
-        await addTeam(newTeam);
+        await createTeam(newTeam);
         return NextResponse.json({ message: "New team has been added" });
     } catch (error) {
         console.error("Error adding team:", error);

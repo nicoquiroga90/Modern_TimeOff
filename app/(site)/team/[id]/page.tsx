@@ -1,3 +1,5 @@
+'use client'
+
 import MyCalendar from "../../../../components/Functionalities/Calendar";
 import CreateTimeoff from "../../../../components/Functionalities/CreateTimeoff";
 import TeamMembers from "../../../../components/Functionalities/TeamDetails";
@@ -6,20 +8,18 @@ import "../../../../components/Functionalities/styles/dashboard.css";
 
 function Dashboard() {
   return (
-<div className="dashboard-conteiner">
-
-        <WelcomeTeam />
-
-<div className="dashboard-main">
-<div className="left-section">
-            <MyCalendar />
+    <div className="dashboard-conteiner">
+      <WelcomeTeam />
+      <div className="dashboard-main">
+        <div className="left-section">
+          <MyCalendar />
           <CreateTimeoff />
-</div>
-<div className="right-section">
+        </div>
+        <div className="right-section">
           <TeamMembers />
-</div>
-</div>
-</div>
+        </div>
+      </div>
+    </div>
   );
 }
 

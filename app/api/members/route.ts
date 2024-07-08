@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getMembers, addMember } from "../../../utils/database";
+import { getMembers, createMember } from "../../../utils/database";
 
 export async function GET() {
     try {
@@ -14,7 +14,7 @@ export async function GET() {
 export async function POST(request) {
     const newMember = request.body;
     try {
-        await addMember(newMember);
+        await createMember(newMember);
         return NextResponse.json({ message: "New member has been added" });
     } catch (error) {
         console.error("Error adding member:", error);
