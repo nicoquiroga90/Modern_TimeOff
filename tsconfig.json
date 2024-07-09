@@ -36,7 +36,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "app/api/members/index.js", "app/api/members/page.jsx", "app/api/teams/[id]"  ],
+, "app/api/members/index.js", "app/api/members/page.jsx", "app/api/teams/[id]", "components/Functionalities/Loading.jsx"  ],
   "exclude": [
     "node_modules"
   ]
