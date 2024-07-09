@@ -68,12 +68,11 @@ const DeleteMember = () => {
 
   const confirmDeleteMember = async () => {
     try {
-      const response = await fetch(apiPath("/members"), {
+      const response = await fetch(apiPath(`/members/${selectedMember}`), {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id: selectedMember }),
       });
 
       if (response.ok) {

@@ -3,7 +3,7 @@
 import { useEffect, useState, useContext } from "react";
 import { Calendar, dayjsLocalizer } from "react-big-calendar";
 import dayjs from "dayjs";
-import '../../node_modules/react-big-calendar/lib/css/react-big-calendar.css';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { TeamDataContext } from "../../components/Functionalities/Context";
 import { apiPath } from "../../utils/api";
 import DeleteTimeOff from "../../components/Functionalities/DeleteTimeOff";
