@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
-import { getTimeOffRecordById, updateTimeOffRecord, deleteTimeOffRecord } from "../../../../utils/database";
+import { getTimeOffRecordById, createTimeOffRecord, deleteTimeOffRecord } from "../../../../utils/database";
 
-export async function GET(request: Request,
-  { params }: { params: { id: string } }
-)  {
+export async function GET(request, { params }) {
     const { id } = params;
     try {
         const timeOffRecord = await getTimeOffRecordById(id);
@@ -18,23 +16,23 @@ export async function GET(request: Request,
     }
 }
 
-export async function PUT(request: Request,
-  { params }: { params: { id: string } }
-)  {
-    const { id } = params;
-    const updatedTimeOffData = request.body;
+export async function POST(request) {
+    const { start_date, end_date, description, member_id } = await request.json();
     try {
-        const updatedTimeOffRecord = await updateTimeOffRecord(id, updatedTimeOffData);
-        return NextResponse.json(updatedTimeOffRecord);
+        const newTimeOffRecord = await createTimeOffRecord({
+            member_id: member_id,
+            start_date,
+            end_date,
+            description: description
+        });
+        return NextResponse.json(newTimeOffRecord);
     } catch (error) {
-        console.error("Error updating time off record:", error);
-        return NextResponse.json({ error: "Failed to update the time off record" }, { status: 500 });
+        console.error("Error creating time off record:", error);
+        return NextResponse.json({ error: "Failed to create the time off record" }, { status: 500 });
     }
 }
 
-export async function DELETE(request: Request,
-  { params }: { params: { id: string } }
-)  {
+export async function DELETE(request, { params }) {
     const { id } = params;
     try {
         await deleteTimeOffRecord(id);

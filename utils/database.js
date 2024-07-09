@@ -16,7 +16,7 @@ export async function getMembers() {
 
 export async function createMember(memberData) {
     const result = await sql`
-        INSERT INTO members (name, email, created_at)
+        INSERT INTO members (name, email, created_date)
         VALUES (${memberData.name}, ${memberData.email}, NOW())
         RETURNING *`;
     return result[0];
@@ -49,7 +49,7 @@ export async function getTeams() {
 
 export async function createTeam(teamData) {
     const result = await sql`
-        INSERT INTO teams (name, description, created_at)
+        INSERT INTO teams (name, description, created_date)
         VALUES (${teamData.name}, ${teamData.description}, NOW())
         RETURNING *`;
     return result[0];
@@ -82,8 +82,8 @@ export async function getTimeOffRecords() {
 
 export async function createTimeOffRecord(timeOffData) {
     const result = await sql`
-        INSERT INTO timeoff (employee_id, start_date, end_date, reason, created_at)
-        VALUES (${timeOffData.employee_id}, ${timeOffData.start_date}, ${timeOffData.end_date}, ${timeOffData.reason}, NOW())
+        INSERT INTO timeoff (member_id, start_date, end_date, description, created_date)
+        VALUES (${timeOffData.member_id}, ${timeOffData.start_date}, ${timeOffData.end_date}, ${timeOffData.description}, NOW())
         RETURNING *`;
     return result[0];
 }
@@ -96,7 +96,7 @@ export async function getTimeOffRecordById(id) {
 export async function updateTimeOffRecord(id, updatedTimeOffData) {
     const result = await sql`
         UPDATE timeoff
-        SET start_date = ${updatedTimeOffData.start_date}, end_date = ${updatedTimeOffData.end_date}, reason = ${updatedTimeOffData.reason}
+        SET start_date = ${updatedTimeOffData.start_date}, end_date = ${updatedTimeOffData.end_date}, description = ${updatedTimeOffData.description}
         WHERE id = ${id}
         RETURNING *`;
     return result[0];
