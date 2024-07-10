@@ -17,7 +17,7 @@ import {
 import "./styles/createMember.css";
 
 function CreateMember() {
-  const params = useParams()
+  const params = useParams();
   const { id } = params;
   const { teams, refreshTeamData } = useContext(TeamDataContext);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,6 +49,7 @@ function CreateMember() {
 
     try {
       setIsLoading(true);
+      console.log(memberData); // Verificar los datos antes de enviarlos
       const response = await fetch(apiPath("/members"), {
         method: "POST",
         headers: {

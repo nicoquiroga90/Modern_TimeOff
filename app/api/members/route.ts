@@ -12,12 +12,12 @@ export async function GET() {
 }
 
 export async function POST(request) {
-  const newMember = request.body;
-  try {
-    await createMember(newMember);
-    return NextResponse.json({ message: "New member has been added" });
-  } catch (error) {
-    console.error("Error adding member:", error);
-    return NextResponse.json({ error: "Failed to add a new member" }, { status: 500 });
-  }
+    try {
+        const newMember = await request.json(); 
+        const createdMember = await createMember(newMember);
+        return NextResponse.json({ message: "New member has been added", member: createdMember });
+    } catch (error) {
+        console.error("Error adding member:", error);
+        return NextResponse.json({ error: "Failed to add a new member" }, { status: 500 });
+    }
 }

@@ -17,6 +17,7 @@ export async function GET(request, { params }) {
 }
 
 export async function POST(request) {
+    console.log(request.body)
     const { start_date, end_date, description, member_id } = await request.json();
     try {
         const newTimeOffRecord = await createTimeOffRecord({

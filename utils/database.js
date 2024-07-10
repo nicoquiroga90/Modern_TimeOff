@@ -16,12 +16,11 @@ export async function getMembers() {
 
 export async function createMember(memberData) {
     const result = await sql`
-        INSERT INTO members (name, email, created_date)
-        VALUES (${memberData.name}, ${memberData.email}, NOW())
+        INSERT INTO members (first_name, last_name, email, color, allowed_dayoff, team_id, assigned_dayoff, created_date)
+        VALUES (${memberData.first_name}, ${memberData.last_name}, ${memberData.email}, ${memberData.color}, ${memberData.allowed_dayoff}, ${memberData.team_id}, ${memberData.assigned_dayoff}, NOW())
         RETURNING *`;
     return result[0];
 }
-
 export async function getMemberById(id) {
     const result = await sql`SELECT * FROM members WHERE id = ${id}`;
     return result[0];
