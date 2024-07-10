@@ -78,7 +78,7 @@ function CreateTimeoff() {
 
       if (response.ok) {
         alert("Time off booked successfully!");
-        refreshTeamData()
+        refreshTeamData();
         setOpenDialog(false);
       } else {
         const data = await response.json();
@@ -110,7 +110,7 @@ function CreateTimeoff() {
       </Button>
 
       <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
-        <DialogTitle  sx={{ fontFamily: "Fira Sans, sans-serif", color: "#47a67e" }}>Create Time Off</DialogTitle>
+        <DialogTitle sx={{ fontFamily: "Fira Sans, sans-serif", color: "#47a67e" }}>Create Time Off</DialogTitle>
         <DialogContent>
           <form className="createTimeoff-form" onSubmit={handleSubmit}>
             <div>
@@ -153,36 +153,36 @@ function CreateTimeoff() {
               />
             </div>
             <div className="dialog-buttons">
-            <div className="cancel-button">
-              <Button
-                onClick={() => setOpenDialog(false)}
-                sx={{
-                  color: "#ff480069 !important",
-                  "&:hover": {
-                    backgroundColor: "#ff480069",
-                    color: "#f5f5f5 !important",
-                  },
-                }}
-              >
-                Cancel
-              </Button></div>
-               <div className="submit-button">
-              <Button
-                type="submit"
-                sx={{
-                  color: "#f5f5f5",
-                  bgcolor: "#83c5ab",
-                  border: "3px solid var(--color-borders)",
-                  borderRadius: "10px",
-
-                  "&:hover": {
-                    backgroundColor: "#47a67e",
+              <div className="cancel-button">
+                <Button
+                  onClick={() => setOpenDialog(false)}
+                  sx={{
+                    color: "#ff480069 !important",
+                    "&:hover": {
+                      backgroundColor: "#ff480069",
+                      color: "#f5f5f5 !important",
+                    },
+                  }}
+                >
+                  Cancel
+                </Button>
+              </div>
+              <div className="submit-button">
+                <Button
+                  type="submit"
+                  sx={{
                     color: "#f5f5f5",
-                  },
-                }}
-              >
-                Submit
-              </Button>
+                    bgcolor: "#83c5ab",
+                    border: "3px solid var(--color-borders)",
+                    borderRadius: "10px",
+                    "&:hover": {
+                      backgroundColor: "#47a67e",
+                      color: "#f5f5f5",
+                    },
+                  }}
+                >
+                  Submit
+                </Button>
               </div>
             </div>
           </form>

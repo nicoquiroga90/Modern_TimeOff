@@ -17,14 +17,13 @@ export async function GET(request, { params }) {
 }
 
 export async function POST(request) {
-    console.log(request.body)
     const { start_date, end_date, description, member_id } = await request.json();
     try {
         const newTimeOffRecord = await createTimeOffRecord({
-            member_id: member_id,
+            member_id,
             start_date,
             end_date,
-            description: description
+            description
         });
         return NextResponse.json(newTimeOffRecord);
     } catch (error) {
