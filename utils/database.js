@@ -82,7 +82,6 @@ console.log(timeOffRecords);
 }
 
 export async function createTimeOffRecord(timeOffData) {
-    console.log(timeOffData);
     const result = await sql`
         INSERT INTO timeoff (start_date, end_date, description, created_date, member_id)
         VALUES (${timeOffData.start_date}, ${timeOffData.end_date}, ${timeOffData.description}, NOW(), ${timeOffData.member_id})

@@ -26,15 +26,20 @@ const DeleteTimeOff = ({
 
   const handleConfirmDelete = async () => {
     try {
-      await fetch(apiPath(`/timeoff`), {
+      const response = await fetch(apiPath(`/timeoff`), {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ id: eventId }),
       });
-      onDelete();
-      setShowDeleteConfirmation(false);
+
+      if (response.ok) {
+        onDelete();
+        setShowDeleteConfirmation(false);
+      } else {
+        console.error("Failed to delete time off record:", response.statusText);
+      }
     } catch (error) {
       console.error("Error deleting event:", error);
     }
@@ -103,8 +108,12 @@ const DeleteConfirmationDialog = ({ open, onClose, onConfirmDelete }) => {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle   sx={{ fontFamily: "Fira Sans, sans-serif", color: "#f44336" }}>Delete Event</DialogTitle>
-      <DialogContent   sx={{ fontFamily: "Fira Sans, sans-serif"}}>
+      <DialogTitle
+        sx={{ fontFamily: "Fira Sans, sans-serif", color: "#f44336" }}
+      >
+        Delete Event
+      </DialogTitle>
+      <DialogContent sx={{ fontFamily: "Fira Sans, sans-serif" }}>
         <p>Are you sure you want to delete this event?</p>
       </DialogContent>
       <DialogActions>

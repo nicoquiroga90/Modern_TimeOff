@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getTimeOffRecordById, createTimeOffRecord, deleteTimeOffRecord } from "../../../../utils/database";
+import { getTimeOffRecordById, createTimeOffRecord } from "../../../../utils/database";
 
 export async function GET(request, { params }) {
     const { id } = params;
@@ -32,13 +32,3 @@ export async function POST(request) {
     }
 }
 
-export async function DELETE(request, { params }) {
-    const { id } = params;
-    try {
-        await deleteTimeOffRecord(id);
-        return NextResponse.json({ message: "Time off record deleted successfully" });
-    } catch (error) {
-        console.error("Error deleting time off record:", error);
-        return NextResponse.json({ error: "Failed to delete the time off record" }, { status: 500 });
-    }
-}
