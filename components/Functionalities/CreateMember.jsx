@@ -49,7 +49,6 @@ function CreateMember() {
 
     try {
       setIsLoading(true);
-      console.log(memberData); // Verificar los datos antes de enviarlos
       const response = await fetch(apiPath("/members"), {
         method: "POST",
         headers: {

@@ -48,8 +48,8 @@ export async function getTeams() {
 
 export async function createTeam(teamData) {
     const result = await sql`
-        INSERT INTO teams (name, description, created_date)
-        VALUES (${teamData.name}, ${teamData.description}, NOW())
+        INSERT INTO teams (team_name, team_code, created_date)
+        VALUES (${teamData.team_name}, ${teamData.team_code}, NOW())
         RETURNING *`;
     return result[0];
 }
@@ -76,8 +76,6 @@ export async function deleteTeam(id) {
 // Funciones CRUD para la entidad "timeoff"
 export async function getTimeOffRecords() {
     const timeOffRecords = await sql`SELECT id,* FROM timeoff`;
-console.log(timeOffRecords);
-
     return timeOffRecords;
 }
 

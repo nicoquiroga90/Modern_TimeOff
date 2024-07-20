@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { apiPath } from "../../utils/api";
@@ -12,7 +12,7 @@ import {
   Alert,
 } from "@mui/material";
 import Loading from "./Loading";
-import "./styles/createTeam.css"
+import "./styles/createTeam.css";
 
 const CreateTeam = ({ setTeamsDatabase }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,13 +46,12 @@ const CreateTeam = ({ setTeamsDatabase }) => {
         throw new Error("Failed to create team");
       }
 
-      setTeamsDatabase((prevTeams) => [
-        ...prevTeams,
-        { id: prevTeams.length + 1, name: newName, code: randomCode },
-      ]);
+      const newTeam = await response.json();
+      setTeamsDatabase((prevTeams) => [...prevTeams, newTeam]);
+
       setTeamCode(randomCode);
       setSuccessDialogOpen(true);
-      handleCloseDialog()
+      handleCloseDialog();
     } catch (error) {
       console.error("Error creating team:", error);
       setErrorDialogOpen(true);
@@ -78,85 +77,76 @@ const CreateTeam = ({ setTeamsDatabase }) => {
   };
 
   return (
-    <div>
-      <button className="button-create-team" onClick={handleOpenDialog}>
+    <>
+      {isLoading && <Loading />}
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleOpenDialog}
+        className="create-team-button"
+      >
         Create Team
-      </button>
-      <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth>
-        <DialogTitle className="dialog-title"
-          sx={{ fontFamily: "Fira Sans, sans-serif", color: "#47a67e" }}
-        >
-          Create New Team
-        </DialogTitle>
+      </Button>
+
+      <Dialog open={openDialog} onClose={handleCloseDialog}>
+        <DialogTitle>Create a New Team</DialogTitle>
         <DialogContent>
-          <TextField 
-          className="input-team-name"
+          <TextField
+            autoFocus
+            margin="dense"
             label="Team Name"
+            type="text"
+            fullWidth
             value={newName}
             onChange={handleInputChange}
-            fullWidth
           />
         </DialogContent>
         <DialogActions>
-          <Button
-            onClick={handleCloseDialog}
-            color="primary"
-            sx={{
-              color: "#ff480069 !important",
-              "&:hover": {
-                backgroundColor: "#ff480069",
-                color: "#f5f5f5 !important",
-              },
-            }}
-          >
+          <Button onClick={handleCloseDialog} color="secondary">
             Cancel
           </Button>
-          <Button
-            onClick={handleCreateTeam}
-            color="primary"
-            sx={{
-              fontFamily: "Fira Sans, sans-serif",
-              color: "#f5f5f5",
-              bgcolor: "#83c5ab",
-              "&:hover": {
-                backgroundColor: "#47a67e;",
-                color: "#f5f5f5",
-              },
-            }}
-          >
+          <Button onClick={handleCreateTeam} color="primary">
             Create
           </Button>
         </DialogActions>
       </Dialog>
-      <Dialog open={errorDialogOpen} onClose={handleCloseErrorDialog}>
-        <DialogTitle>Error</DialogTitle>
+
+      <Dialog
+        open={errorDialogOpen}
+        onClose={handleCloseErrorDialog}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Error"}</DialogTitle>
         <DialogContent>
-          <Alert severity="error">
-            Failed to create team. Please try again.
-          </Alert>
+          <Alert severity="error">Failed to create team. Please try again.</Alert>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseErrorDialog} color="primary">
-            Close
+            OK
           </Button>
         </DialogActions>
       </Dialog>
-      <Dialog open={successDialogOpen} onClose={handleCloseSuccessDialog}>
-        <DialogTitle>Team Created</DialogTitle>
+
+      <Dialog
+        open={successDialogOpen}
+        onClose={handleCloseSuccessDialog}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Success"}</DialogTitle>
         <DialogContent>
-          <div>
-            <p>Team created successfully!</p>
-            <p>Team Code: {teamCode}</p>
-          </div>
+          <Alert severity="success">
+            Team created successfully! Your team code is {teamCode}.
+          </Alert>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseSuccessDialog} color="primary">
-            Close
+            OK
           </Button>
         </DialogActions>
       </Dialog>
-      {isLoading && <Loading open={true}/>}
-    </div>
+    </>
   );
 };
 

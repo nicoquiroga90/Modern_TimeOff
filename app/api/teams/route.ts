@@ -12,8 +12,8 @@ export async function GET() {
 }
 
 export async function POST(request) {
-    const newTeam = request.body;
     try {
+        const newTeam = await request.json();
         await createTeam(newTeam);
         return NextResponse.json({ message: "New team has been added" });
     } catch (error) {
