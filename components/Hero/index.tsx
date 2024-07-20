@@ -2,11 +2,13 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import CreateTeam from "../Functionalities/CreateTeam";
 
 const Hero = () => {
   const [teamCode, setTeamCode] = useState("");
   const [error, setError] = useState("");
   const [teamsDatabase, setTeamsDatabase] = useState([]);
+  
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -69,7 +71,8 @@ const Hero = () => {
                 )}
 
                 <p className="mt-5 text-black dark:text-white">
-                  Don't have a team created yet?<br/>Create one from our menu! 😃
+                  Don't have a team created yet?<br/>
+            <CreateTeam setTeamsDatabase={setTeamsDatabase} />
                 </p>
               </div>
             </div>

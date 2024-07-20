@@ -12,7 +12,6 @@ const Header = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [dropdownToggler, setDropdownToggler] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
-  const [teamsDatabase, setTeamsDatabase] = useState([]);
 
   const pathUrl = usePathname();
 
@@ -162,8 +161,6 @@ const Header = () => {
             >
               GitHub Repo 🌟
             </Link>
-
-            <CreateTeam setTeamsDatabase={setTeamsDatabase} />
           </div>
         </div>
       </div>
