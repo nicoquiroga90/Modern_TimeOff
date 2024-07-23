@@ -4,6 +4,13 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const CTA = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       {/* <!-- ===== CTA Start ===== --> */}
@@ -32,9 +39,12 @@ const CTA = () => {
                 Join With Us Today & Increase Your Productivity
               </h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                convallis tortor eros. Donec vitae tortor lacus. Phasellus
-                aliquam ante in maximus.
+                Simplify the process of managing vacations with TimeOFF. Our app
+                offers a user-friendly interface for creating teams, managing
+                team members, and tracking their time off. Enjoy seamless
+                integration, intuitive features, and a streamlined workflow that
+                boosts your productivity. Sign up now to experience effortless
+                time management and enhanced team coordination.
               </p>
             </motion.div>
             <motion.div
@@ -63,11 +73,11 @@ const CTA = () => {
                   alt="Saly"
                   className="hidden xl:block"
                 />
-                <a
-                  href="signup.html"
+                <button
+                  onClick={scrollToTop}
                   className="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white hover:opacity-90 dark:bg-white dark:text-black"
                 >
-                  Sign up free
+                  Create your Team and sign up now!
                   <Image
                     width={20}
                     height={20}
@@ -82,7 +92,7 @@ const CTA = () => {
                     alt="Arrow"
                     className="hidden dark:block"
                   />
-                </a>
+                </button>
               </div>
             </motion.div>
           </div>
