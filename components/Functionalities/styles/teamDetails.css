@@ -24,4 +24,5 @@
   display: flex;
   padding: 0 0 0 3em;
   flex-flow: column;
+  gap: 1em;
 }
