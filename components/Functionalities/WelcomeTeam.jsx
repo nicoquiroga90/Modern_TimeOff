@@ -38,7 +38,7 @@ const WelcomeTeam = () => {
         <div className="titleContainer-heading">
           {team && (
             <h1>
-              Hi Team <span>{team.team_name}!</span>
+              Hi Team <span>{team.team_name}</span>!😃
             </h1>
           )}
         </div>

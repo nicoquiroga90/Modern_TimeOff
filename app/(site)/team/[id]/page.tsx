@@ -9,13 +9,13 @@ import "../../../../components/Functionalities/styles/dashboard.css";
 function Dashboard() {
   return (
     <div className="dashboard-conteiner">
-      <WelcomeTeam />
       <div className="dashboard-main">
         <div className="left-section">
           <MyCalendar />
           <CreateTimeoff />
         </div>
         <div className="right-section">
+        <WelcomeTeam />
           <TeamMembers />
         </div>
       </div>

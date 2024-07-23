@@ -2,18 +2,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--color-background);
-  padding: 0em 2em;
+  margin: 1em 0 0.5em; 
 }
 
 
 .titleContainer h1{
   font-size: 1.6em;
-    color:  var(--color-textlight);
+    color:  grey;
+    font-family:  Helvetica, sans-serif,
+    font-
+    
+    
 }
 
 .titleContainer span{
-  color:  var(--color-text);
+  color:  green;
   font-size: 1.2em;
 }
 
