@@ -1,9 +1,8 @@
 .dashboard-main {
     display: flex;
     justify-content: space-around;
-    background-color: var(--color-backgroundlight);
     flex-wrap: wrap;
-    padding: 2em 0 8em;
+    padding: 5em 0 8em;
 }
 
 .left-section {
