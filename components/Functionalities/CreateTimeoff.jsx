@@ -110,7 +110,7 @@ function CreateTimeoff() {
       </Button>
 
       <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
-        <DialogTitle sx={{ fontFamily: "Fira Sans, sans-serif", color: "#47a67e" }}>Create Time Off</DialogTitle>
+        <DialogTitle sx={{ fontFamily: "Fira Sans, sans-serif", color: "#47a67e" }}>Create Time OFF</DialogTitle>
         <DialogContent>
           <form className="createTimeoff-form" onSubmit={handleSubmit}>
             <div>
