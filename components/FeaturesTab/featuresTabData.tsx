@@ -21,7 +21,7 @@ const featuresTabData: FeatureTab[] = [
     id: "tabThree",
     title: "Functional, simple, and intuitive.",
     desc1: `Explore a system that’s practical, easy, and user-friendly. `,
-    desc2: `Nam id eleifend dui, id iaculis purus. Etiam lobortis neque nec finibus sagittis. Nulla ligula nunc egestas ut.`,
+    desc2: ``,
     image: "/images/features/features-light-01.png",
     imageDark: "/images/features/features-dark-01.svg",
   },
