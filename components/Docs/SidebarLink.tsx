@@ -15,7 +15,7 @@ const SidebarLink = () => {
           href={`/docs`}
           className={`flex w-full rounded-sm px-3 py-2 text-base text-black dark:text-white `}
         >
-          Bootstrap Template Guide
+       Template Guide
         </Link>
         <Link
           href={`/docs`}
@@ -27,7 +27,7 @@ const SidebarLink = () => {
           href={`/docs`}
           className={`flex w-full rounded-sm px-3 py-2 text-base text-black dark:text-white `}
         >
-          Using Tailwind Components
+          Using Tailwind 
         </Link>
       </li>
     </>
