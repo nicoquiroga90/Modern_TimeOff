@@ -105,3 +105,13 @@ export async function deleteTimeOffRecord(id) {
     const result = await sql`DELETE FROM timeoff WHERE id = ${id} RETURNING *`;
     return result[0];
 }
+
+// Funciones CRUD para la entidad "contact"
+
+export async function createContact(contactData) {
+    const result = await sql`
+        INSERT INTO contacts (name, email, subject, phone, message, created_date)
+        VALUES (${contactData.name}, ${contactData.email}, ${contactData.subject}, ${contactData.phone}, ${contactData.message}, NOW())
+        RETURNING *`;
+    return result[0];
+}
