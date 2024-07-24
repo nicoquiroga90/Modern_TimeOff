@@ -20,6 +20,7 @@ const SubmitTeam = () => {
       setIsLoading(true); 
 
       const response = await fetch(apiPath("/teams"));
+      console.log(response)
       if (!response.ok) {
         throw new Error("Failed to fetch teams");
       }

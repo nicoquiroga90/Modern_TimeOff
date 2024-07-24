@@ -6,7 +6,6 @@ export async function POST(request: Request) {
   try {
     const { name, email, subject, phone, message } = await request.json();
 
-    // Validaciones básicas
     if (!name || !email || !subject || !phone || !message) {
       return NextResponse.json({ success: false, message: 'All fields are required' }, { status: 400 });
     }
@@ -20,7 +19,6 @@ export async function POST(request: Request) {
   }
 }
 
-// Maneja los métodos no permitidos
 export async function OPTIONS() {
   return NextResponse.json({ success: false, error: 'Method Not Allowed' }, { status: 405 });
 }
