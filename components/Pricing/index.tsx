@@ -105,7 +105,7 @@ const Pricing = () => {
                     300 GB Storage
                   </li>
                   <li className="mb-4 text-black last:mb-0 dark:text-manatee">
-                    Unlimited Photos and Videos
+                    Unlimited Events
                   </li>
                   <li className="mb-4 text-black last:mb-0 dark:text-manatee">
                     Exclusive Support
