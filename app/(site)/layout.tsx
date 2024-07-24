@@ -1,5 +1,6 @@
 "use client";
 
+import { Analytics } from "@vercel/analytics/react"
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Lines from "@/components/Lines";
@@ -32,6 +33,7 @@ export default function RootLayout({
             {children}
             <Footer />
             <ScrollToTop />
+            <Analytics />
           </TeamDataProvider>
         </ThemeProvider>
       </body>
