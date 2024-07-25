@@ -173,7 +173,7 @@ function CreateTimeoff() {
                   sx={{
                     color: "#f5f5f5",
                     bgcolor: "#83c5ab",
-                    border: "3px solid var(--color-borders)",
+                    border: "3px solid aquamarine",
                     borderRadius: "10px",
                     "&:hover": {
                       backgroundColor: "#47a67e",
