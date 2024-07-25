@@ -2,10 +2,6 @@
     margin: 0.1em 0;
 }
 
-.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
-    color: var(--color-text) !important;
-}
-
 .css-sghohy-MuiButtonBase-root-MuiButton-root:hover{
     background-color: lightseagreen !important;
 }
