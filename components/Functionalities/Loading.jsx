@@ -17,6 +17,7 @@ function Loading({ open }) {
       });
     }
   }, [isClient]); 
+    return null; 
 
   return (
     <Dialog open={open} aria-describedby="alert-dialog-description">
