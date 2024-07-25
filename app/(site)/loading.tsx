@@ -1,25 +1,11 @@
-"use client";
-import { useEffect, useState } from "react";
+
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 
-function Loading({ open }) {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (isClient) {
-      import("ldrs").then(({ leapfrog }) => {
-        leapfrog.register();
-      });
-    }
-  }, [isClient]); 
+export default function Loading() {
 
   return (
-    <Dialog open={open} aria-describedby="alert-dialog-description">
+    <Dialog open aria-describedby="alert-dialog-description">
       <DialogContent>
         <l-leapfrog
           size="50"
@@ -31,5 +17,3 @@ function Loading({ open }) {
     </Dialog>
   );
 }
-
-export default Loading;
