@@ -9,18 +9,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 22em;
+  width: auto;
 }
 
 .createTimeoff-form input[type="date"],
 .createTimeoff-form input[type="text"],
 .createTimeoff-form select {
-  width: 20em;
+  width: 100%;
   padding: 8px;
   border: 1px solid;
   border-radius: 10px;
   box-sizing: border-box;
   margin-bottom: 0.9em;
+  margin-left: 0.5em;
   background-color: whitesmoke;
 }
 
@@ -32,4 +33,9 @@
 
 .book-timeoff {
   background-color: white;
+}
+
+label{
+     display: flex;
+    justify-content: center;
 }
