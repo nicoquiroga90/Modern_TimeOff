@@ -21,3 +21,15 @@ export async function POST(request) {
         return NextResponse.json({ error: "Failed to add a new team" }, { status: 500 });
     }
 }
+
+export async function OPTIONS() {
+    return NextResponse.json(null, {
+        status: 204,
+        headers: {
+            'Access-Control-Allow-Credentials': 'true',
+            'Access-Control-Allow-Origin': '*', 
+            'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        },
+    });
+}
