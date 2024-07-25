@@ -1,6 +1,7 @@
-
+import 'ldrs/leapfrog'
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
+
 
 export default function Loading() {
 
