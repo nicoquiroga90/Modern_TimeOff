@@ -53,7 +53,7 @@ const Footer = () => {
                   contact
                 </p>
                 <a
-                  href="#"
+                  href="mailto:nicoq1290@gmail"
                   className="text-itemtitle font-medium text-black dark:text-white"
                 >
                   nicoq1290@gmail.com
@@ -86,7 +86,7 @@ const Footer = () => {
                   <ul>
                     <li>
                       <a
-                        href="#"
+                        href="https://modern-time-off.vercel.app/"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Home
@@ -94,7 +94,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="#features"
+                        href="https://modern-time-off.vercel.app/#features"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Features
@@ -102,7 +102,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="#integration"
+                        href="https://modern-time-off.vercel.app/#integration"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Integration
@@ -138,7 +138,7 @@ const Footer = () => {
                     
                     <li>
                       <a
-                        href="#support"
+                        href="https://modern-time-off.vercel.app/support"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Contact Us
