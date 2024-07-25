@@ -1,5 +1,7 @@
 "use client";
 
+import { Suspense } from "react";
+import Loading from "./loading";
 import { Analytics } from "@vercel/analytics/react"
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -30,7 +32,7 @@ export default function RootLayout({
             <Lines />
             <Header />
             <ToasterContext />
-            {children}
+            <Suspense fallback={<Loading />}>{children}</Suspense>
             <Footer />
             <ScrollToTop />
             <Analytics />
