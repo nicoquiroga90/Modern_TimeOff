@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import CreateTeam from "../Functionalities/CreateTeam";
+import { apiPath } from "../../utils/api";
 
 const Hero = () => {
   const [teamCode, setTeamCode] = useState("");
@@ -16,7 +17,7 @@ const Hero = () => {
     setError("");
 
     try {
-      const response = await fetch('http://localhost:3000/api/teams');
+      const response = await fetch(apiPath("/teams"));
       const teams = await response.json();
 
       const team = teams.find((team) => team.team_code === teamCode);
