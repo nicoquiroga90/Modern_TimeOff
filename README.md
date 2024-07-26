@@ -69,10 +69,6 @@ From the homepage, use the "Create Team" button. You will be required to enter a
 
 The project is open to contributions. If you wish to contribute, fork the repository and open a Pull Request (PR).
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
 ## Contact
 
 You can contact me via email at nicoq1290@gmail.com or leave a message through the Support/Contact section of the website.
