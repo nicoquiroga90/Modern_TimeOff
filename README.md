@@ -20,7 +20,6 @@ TimeOFF provides a user-friendly interface for creating teams, managing team mem
 - [Stack](#stack)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Installation
