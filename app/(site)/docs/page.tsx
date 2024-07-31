@@ -31,8 +31,8 @@ export default function DocsPage() {
                 <p className="text-body-color dark:text-body-color-dark text-base">
                   Please visit:{" "}
                   <b>
-                    <a href="https://nextjstemplates.com/docs">
-                      nextjstemplates.com/docs
+                    <a href="">
+                      <u>https://timeoff.vercel.app/</u>
                     </a>
                   </b>{" "}
                  setup guide 
